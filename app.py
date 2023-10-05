@@ -22,9 +22,12 @@ app.config["UPLOAD_FOLDER"] = "./static/profile_pics"
 
 SECRET_KEY = "SPARTA"
 
-MONGODB_CONNECTION_STRING = "mongodb+srv://test:sparta@cluster0.bxgxpsu.mongodb.net/?retryWrites=true&w=majority"
-client = MongoClient(MONGODB_CONNECTION_STRING)
-db = client.dbsparta_plus_week4
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME = os.environ.get("DB_NAME")
+
+client = MongoClient(MONGODB_URI)
+db = client[DB_NAME]
+
 
 TOKEN_KEY = "mytoken"
 
